@@ -1,0 +1,371 @@
+@prefix schema: <https://schema.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix voaf: <http://purl.org/vocommons/voaf#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix wd: <http://www.wikidata.org/entity/> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix akwi: <https://bmake.th-brandenburg.de/akwi/> .
+
+### Vocabulary Definition ###
+<https://bmake.th-brandenburg.de/akwi/> a owl:Ontology , voaf:Vocabulary ;
+	dc:creator <http://orcid.org/0000-0002-2780-0222> ;
+	dc:rights "Copyright © 2018 BMaKE, THB" ;
+	dc:publisher  wd:Q1391182 ; 
+	dc:title "Basisschema für die Mitglieder des AKWI" ;
+	rdfs:label "AKWI Mitglieder"@de ;
+	dc:description <https://bmake.th-brandenburg.de/downloads/AKWIMembersBaseSchema.svg> , "Dieses Vokabular dient der strukturierten Erfassung, Nutzung und Pflege von Mitgliedsdaten des AKWI."@en ;
+	dcterms:issued "2018-12-19"^^xsd:date ;
+	dcterms:modified "2019-01-05"^^xsd:date ;
+	rdfs:comment "Dieses Vokabular wird unter der Wiederverwendung von schema.org-Klassen, Relationen und Attributen definiert. Es zielt in erster Linie auf die Unterstützung der Dokumentation, Wartung und Bereitstellung von Daten zu Mitgliedern des AKWI. "@en ;
+	owl:versionInfo "v 0.2"@en ;
+	schema:license <http://creativecommons.org/licenses/by/3.0/> ;
+	skos:prefLabel "AKWI Mitglieder"@en . 
+
+voaf:Vocabulary a owl:Class;
+	rdfs:label "Vocabulary";
+	rdfs:subClassOf schema:CreativeWork .
+
+<http://orcid.org/0000-0002-2780-0222> a schema:Person ;
+			schema:name "Vera G. Meister" ;
+			schema:givenName "Vera G." ;
+			schema:familyName "Meister" ;
+			schema:honorificPrefix "Prof. Dr." ;
+			schema:email "vera.meister@th-brandenburg.de" ;
+			schema:affiliation wd:Q1391182 ;
+			schema:url "https://www.th-brandenburg.de/mitarbeiterseiten/fbw/vera-meister/" .
+			
+wd:Q1391182 a schema:Organization ;
+			rdfs:legalName "THB - Technische Hochschule Brandenburg"@de ; 
+			schema:name	"BUAS - Brandenburg University of Applied Sciences"@en ;
+			schema:url "http://th-brandenburg.de" .
+
+### Definition of Re-Used Classes ### 
+schema:CreativeWork a owl:Class ;
+			rdfs:label "Creative Work"@en, "Werk, Schöpfung"@de ;
+			rdfs:comment "Basisklasse für alle Ergebnisse kreativer Arbeit. Hier referenziert als Oberklasse für Studiengänge"@de ;
+			rdfs:isDefinedBy <https://schema.org/> .
+			
+schema:Course a owl:Class ;
+			rdfs:label "Study Program"@en, "Studiengang"@de ;
+			rdfs:subClassOf schema:CreativeWork ;
+			rdfs:comment "Klasse für die im AKWI organisierten Studiengänge für Wirtschaftsinformatik"@de ;
+			rdfs:isDefinedBy <https://schema.org/> .
+								
+schema:Person a owl:Class ;
+			rdfs:label "Person"@en, "Person"@de ;
+			rdfs:comment "Basisklasse aller Personen - wird hier verwendet, um Verantwortliche und Ansprechpartner der im AKWI organisierten Studiengänge zu erfassen"@de ;
+			rdfs:isDefinedBy <https://schema.org/> .
+	
+schema:Organization a owl:Class ;
+			rdfs:label "Organization"@en, "Organisation/Einrichtung"@de ;
+			rdfs:comment "Oberklasse aller Organisationen oder Einrichtungen - wird hier verwendet um den AKWI und die Dachorganisation GI sowie die Einrichtungen zu erfassen, welche WI-Studiengänge anbieten"@de ;
+			rdfs:isDefinedBy <https://schema.org/> .
+			
+schema:CollegeOrUniversity a owl:Class ;
+			rdfs:label "College or University"@en, "Hochschule"@de ;
+			rdfs:comment "Klasse zur referenzierung von Hochschulen - wird hier verwendet um Hochschulen für angewandte Wissenschaften zu erfassen, welche WI-Studiengänge anbieten"@de ;
+			rdfs:subClassOf schema:Organization ;
+			rdfs:isDefinedBy <https://schema.org/> .
+			
+schema:Intangible a owl:Class ;
+			rdfs:label "Intangible"@en, "Immaterielles"@de ;
+			rdfs:comment "Basisklasse für alle immatieriellen bzw. nicht greifbaren Ressourcen; wird hier verwendet, um Adressen und Referenzrahmen für Studiengänge zu dokumentieren"@de ;
+			rdfs:isDefinedBy <https://schema.org/> .
+			
+schema:AlignmentObject a owl:Class ;
+			rdfs:label "Alignment Object"@en, "Ausrichtungsobjekt"@de ;
+			rdfs:comment "ein immaterielles Objekt, an dem sich ein Modul ausrichtet, was zugleich ein Knoten (ein Paragraph, ein Absatz) in einem Bildungs- oder Qualifikationsrahmen ist"@de ;
+			rdfs:subClassOf schema:Intangible ;
+			rdfs:isDefinedBy <https://schema.org/> .		
+
+schema:PostalAddress a owl:Class ;
+			rdfs:label "Postal Address"@en, "Postanschrift"@de ;
+			rdfs:comment "sammelt alle Elemente einer Postanschrift (Land, Region, Straße, PLZ, Stadt)"@de ;
+			rdfs:subClassOf schema:Intangible ;
+			rdfs:isDefinedBy <https://schema.org/> .		
+	
+schema:DataType a rdfs:Class ;
+			rdfs:label "Data Type"@en, "Datentyp"@de ;
+			rdfs:comment "Oberklasse für grundlegende Datentypen für Literale"@de ;
+			rdfs:isDefinedBy <https://schema.org/> .
+
+schema:Text a rdfs:Class ;
+			rdfs:label "Text"@en, "Text"@de ;
+			rdfs:comment "Allgemeine Klasse für alle Literale eines beliebigen textuellen Datentyps."@de ;
+			rdfs:subClassOf schema:DataType ;
+			rdfs:isDefinedBy <https://schema.org/> .
+			
+schema:Number a rdfs:Class ;
+			rdfs:label "Number"@en, "Nummer"@de ;
+			rdfs:comment "Allgemeine Klasse für alle Literale eines beliebigen numerischen Datentyps."@de ;
+			rdfs:subClassOf schema:DataType ;
+			rdfs:isDefinedBy <https://schema.org/> .			
+
+schema:URL a rdfs:Class ;
+			rdfs:label "URL"@en, "URL"@de ;
+			rdfs:comment "Allgemeine Klasse für alle Literale die eine URL darstellen."@de ;
+			rdfs:subClassOf schema:Text ;
+			rdfs:isDefinedBy <https://schema.org/> .
+			
+schema:Date a rdfs:Class ;
+			rdfs:label "Date"@en, "Datum"@de ;
+			rdfs:comment "Allgemeine Klasse für alle Literale die ein Datum angeben."@de ;
+			rdfs:subClassOf schema:DataType ;
+			rdfs:isDefinedBy <https://schema.org/> .
+
+### Definition of specific Classes ### 
+akwi:DepartmentOrFaculty a owl:Class ;
+			rdfs:label "Department or Faculty"@en, "Fachbereich oder Fakultät"@de ;
+			rdfs:comment "Klasse für Fachbereiche oder Fakultäten von Hochschulen, die WI-Studiengänge anbieten"@de ;
+			rdfs:subClassOf schema:CollegeOrUniversity ;
+			rdfs:isDefinedBy <https://bmake.th-brandenburg.de/akwi/> .
+
+### Object properties ###
+schema:educationalAlignment a owl:ObjectProperty ;
+			rdfs:label "educational alignment"@en, "edukative Ausrichtung"@de ;
+			rdfs:comment "wird verwendet, um Abschlussgrade für einen Studiengang zu referenzieren. Ausrichtungsobjekte können z. B. Prüfungsordnungen sein."@de ;
+			rdfs:domain schema:Course ;
+			rdfs:range schema:AlignmentObject ;
+			rdfs:isDefinedBy <https://schema.org/> .
+
+schema:accountablePerson a owl:ObjectProperty ;
+			rdfs:label "accountable person"@en, "Verantwortlich/e"@de ;
+			rdfs:comment "wird verwendet, um den oder die Verantwortliche/n zu einem Studiengang zu referenzieren"@de ;
+			rdfs:domain schema:Course ;
+			rdfs:range schema:Person ;
+			rdfs:isDefinedBy <https://schema.org/> .
+
+schema:provider a owl:ObjectProperty ;
+			rdfs:label "provider"@en, "Anbieter"@de ;
+			rdfs:comment "wird verwendet, um die/den ausrichtende/n Fakultät/Fachbereich zu einem Studiengang zu referenzieren"@de ;
+			rdfs:domain schema:Course ;
+			rdfs:range akwi:DepartmentOrFaculty ;
+			rdfs:isDefinedBy <https://schema.org/> .
+
+schema:employee a owl:ObjectProperty ;
+			rdfs:label "employee"@en, "hat Mitarbeiter"@de ;
+			rdfs:comment "wird verwendet, um den oder die Mitarbeiter/in eines/r Fabereichs/Fakultät einer Hochschule zu referenzieren"@de ;
+			rdfs:domain akwi:DepartmentOrFaculty ;
+			rdfs:range schema:Person ;
+			rdfs:isDefinedBy <https://schema.org/> .
+
+schema:member a owl:ObjectProperty ;
+			rdfs:label "member"@en, "Mitglied"@de ;
+			rdfs:comment "wird verwendet, um Mitglieder (Personen oder Organisationen) einer Organisation zu referenzieren"@de ;
+			rdfs:domain schema:Organization ;
+			rdfs:range [ owl:unionOf ( schema:Person schema:Organization) ] ;
+			rdfs:isDefinedBy <https://schema.org/> .
+
+schema:subOrganization a owl:ObjectProperty ;
+			rdfs:label "suborganization"@en, "hat Unterorganisation"@de ;
+			rdfs:comment "wird verwendet, um die Unterorganisation einer Organisation zu referenzieren"@de ;
+			rdfs:domain schema:Organization ;
+			rdfs:range schema:Organization ;
+			rdfs:isDefinedBy <https://schema.org/> .
+			
+schema:department a owl:ObjectProperty ;
+			rdfs:label "department"@en, "hat Fachbereich"@de ;
+			rdfs:comment "wird verwendet, um die Fachbereiche bzw. Fakultäten einer Hochschule zu referenzieren"@de ;
+			rdfs:domain schema:CollegeOrUniversity ;
+			rdfs:range akwi:DepartmentOrFaculty ;
+			rdfs:isDefinedBy <https://schema.org/> .
+	
+schema:address a owl:ObjectProperty ;
+			rdfs:label "address"@en, "Adresse"@de ;
+			rdfs:comment "wird verwendet, um Personen oder Organisationen eine Adresse zuzuordnen"@de ;
+			rdfs:domain [ owl:unionOf ( schema:Person schema:Organization) ] ;
+			rdfs:range schema:PostalAddress ;
+			rdfs:isDefinedBy <https://schema.org/> .
+			
+schema:author a owl:ObjectProperty ;
+			rdfs:label "author"@en, "Autor"@de ;
+			rdfs:comment "wird verwendet, um den Schreiber des Werkes aufzuführen"@de ;
+			rdfs:domain schema:Person ;
+			rdfs:range schema:CreativeWork ;
+			rdfs:isDefinedBy <https://schema.org/> .				
+
+
+### Datatype Properties ###
+schema:name a owl:DatatypeProperty ;
+			rdfs:label "name"@en, "Name oder Bezeichnung"@de ;
+			rdfs:comment "Wird hauptsächlich für die Bezeichnung von Studiengängen verwendet."@de ;
+			rdfs:range schema:Text ;
+			rdfs:isDefinedBy <https://schema.org/> .
+					
+schema:url a owl:DatatypeProperty ;
+			rdfs:label "url"@en, "URL"@de ;
+			rdfs:comment "allgemeines Attribut zur eindeutigen Referenz bzw. zur Bereitstellung weiterführender Informationen zu einer Ressource"@de ;
+			rdfs:range schema:URL ;
+			rdfs:isDefinedBy <https://schema.org/> .
+
+schema:alignmentType a owl:DatatypeProperty ;
+			rdfs:label "aligmentType"@en, "Ausrichtungstyp"@de ;
+			rdfs:comment "relevant sind nur der Abschlussgrad (Bachelor, Master - konsekutiv, weiterbildend) sowie die Studienform (Vollzeit/Teilzeit/Dual/Berufsbegleitend)"@de ;
+			rdfs:domain schema:AlignmentObject ;
+			rdfs:range schema:Text ;
+			rdfs:isDefinedBy <https://schema.org/> .	
+
+schema:targetName a owl:DatatypeProperty ;
+			rdfs:label "target name"@en, "Bezeichnung des Abschlussgrades bzw. der Studienform"@de ;
+			rdfs:comment "referenziert auf die Bezeichnung der hier verwendeten Vorgabe aus dem Ausrichtungsrahmen, z. B. Bezeichnung eines Abschlussgrades oder einer Studienform"@de ;
+			rdfs:domain schema:AlignmentObject ;
+			rdfs:range schema:Text ;
+			rdfs:isDefinedBy <https://schema.org/> .	
+
+schema:targetDescription a owl:DatatypeProperty ;
+			rdfs:label "target description"@en, "Beschreibung des Abschlussgrades bzw. der Studienform"@de ;
+			rdfs:comment "gibt eine Kurzbeschreibung  der hier verwendeten Vorgabe aus dem Ausrichtungsrahmen, z. B. Kurzbeschreibung eines Abschlussgrades oder einer Studienform"@de ;
+			rdfs:domain schema:AlignmentObject ;
+			rdfs:range schema:Text ;
+			rdfs:isDefinedBy <https://schema.org/> .	
+
+schema:targetURL a owl:DatatypeProperty ;
+			rdfs:label "target URL"@en, "verweist auf eine Webseite, die nähere Informationen zum Ausrichtungsrahmen enthält, z. B. auf ein Prüfungsordnungsdokument"@de ;
+			rdfs:comment "URL eines Dokuments oder einer Webseite mit weiteren Informationen zu den Abschlussgraden bzw. Studienformen."@en ;
+			rdfs:domain schema:AlignmentObject ;
+			rdfs:range schema:URL ;
+			rdfs:isDefinedBy <https://schema.org/> .	
+
+schema:educationalFramework a owl:DatatypeProperty ;
+			rdfs:label "educational framework"@en, "Bildungs-/Qualifikationsrahmen"@de ;
+			rdfs:comment "Bildungs- bzw. Qualifikationsrahmen auf den sich ein Ausrichtungsobjekt bezieht"@de ;
+			rdfs:domain schema:AlignmentObject ;
+			rdfs:range schema:Text ;
+			rdfs:isDefinedBy <https://schema.org/> .	
+	
+schema:license a owl:DatatypeProperty ;
+			rdfs:label "license"@en, "Lizenz"@de ;
+			rdfs:comment "referenziert ein Lizensierungsdokument, das auf ein Werk anwendbar ist, meist eine URL"@de ;
+			rdfs:domain schema:CreativeWork ;
+			rdfs:range schema:URL ;
+			rdfs:isDefinedBy <https://schema.org/> .
+
+schema:gender a owl:DatatypeProperty ;
+			rdfs:label "gender"@en, "Geschlecht"@de ;
+			rdfs:comment "Geschlecht einer Person"@de ;
+			rdfs:domain schema:Person ;
+			rdfs:range schema:Text ;
+			rdfs:isDefinedBy <https://schema.org/> .
+
+schema:familyName a owl:DatatypeProperty ;
+			rdfs:label "family name"@en, "Nachname"@de ;
+			rdfs:comment "Nach- oder Familienname einer Person"@de ;
+			rdfs:domain schema:Person ;
+			rdfs:range schema:Text ;
+			rdfs:isDefinedBy <https://schema.org/> .	
+
+schema:givenName a owl:DatatypeProperty ;
+			rdfs:label "given name"@en, "Vorname"@de ;
+			rdfs:comment "Vorname(n) einer Person"@de ;
+			rdfs:domain schema:Person ;
+			rdfs:range schema:Text ;
+			rdfs:isDefinedBy <https://schema.org/> .	
+	
+schema:email a owl:DatatypeProperty ;
+			rdfs:label "email"@en, "E-Mail"@de ;
+			rdfs:comment "E-Mail-Adresse einer Person"@de ;
+			rdfs:domain schema:Person ;
+			rdfs:range schema:Text ;
+			rdfs:isDefinedBy <https://schema.org/> .	
+
+schema:honorificPrefix a owl:DatatypeProperty ;
+			rdfs:label "honorific prefix"@en, "vorangestellter Ehrentitel"@de ;
+			rdfs:comment "voranzustellender Ehrentitel einer Person, z. B. Prof. Dr."@de ;
+			rdfs:domain schema:Person ;
+			rdfs:range schema:Text ;
+			rdfs:isDefinedBy <https://schema.org/> .	
+			
+schema:sameAs a owl:DatatypeProperty ;
+			rdfs:label "same as"@en, "dasselbe"@de ;
+			rdfs:comment "wird verwendet, um eine Ressource mit einer eindeutigen URL zu verknüpfen, z. B. einer Wikidata-Id."@de ;
+			rdfs:domain schema:Thing ;
+			rdfs:range schema:URL ;
+			rdfs:isDefinedBy <https://schema.org/> .
+			
+schema:legalName a owl:DatatypeProperty ;
+			rdfs:label "legal name"@en, "offizielle Bezeichnung"@de ;
+			rdfs:comment "wird verwendet, um die offizielle Bezeichnung einer Organisation zu erklären"@de ;
+			rdfs:domain schema:Organization ;
+			rdfs:range schema:Text ;
+			rdfs:isDefinedBy <https://schema.org/> .
+			
+schema:datePublished a owl:DatatypeProperty ;
+			rdfs:label "date published"@en, "Veröffentlichungsdatum"@de ;
+			rdfs:comment "is used to specify a publishing date for a creative work"@en, "verweist auf das Datum der Veröffentlichung eines Werks"@de ;
+			rdfs:domain schema:CreativeWork ;
+			rdfs:range schema:Date ;
+			rdfs:isDefinedBy <https://schema.org/> .
+			
+schema:addressCountry a owl:DatatypeProperty ;
+			rdfs:label "address country"@en, "Land (Adresse)"@de ;
+			rdfs:comment "wird verwendet, um das Land einer postalischen Adresse zu definieren"@de ;
+			rdfs:domain schema:PostalAddress ;
+			rdfs:range schema:Text ;
+			rdfs:isDefinedBy <https://schema.org/> .
+	
+schema:addressRegion a owl:DatatypeProperty ;
+			rdfs:label "address region"@en, "Region (Adresse)"@de ;
+			rdfs:comment "wird verwendet, um die Region oder das Bundesland einer postalischen Adresse zu definieren"@de ;
+			rdfs:domain schema:PostalAddress ;
+			rdfs:range schema:Text ;
+			rdfs:isDefinedBy <https://schema.org/> .
+	
+schema:addressLocality a owl:DatatypeProperty ;
+			rdfs:label "address locality"@en, "Ort (Adresse)"@de ;
+			rdfs:comment "wird verwendet, um die Gemeinde oder Stadt einer postalischen Adresse zu definieren"@de ;
+			rdfs:domain schema:PostalAddress ;
+			rdfs:range schema:Text ;
+			rdfs:isDefinedBy <https://schema.org/> .
+	
+schema:postalCode a owl:DatatypeProperty ;
+			rdfs:label "postal code"@en, "PLZ (Adresse)"@de ;
+			rdfs:comment "wird verwendet, um PLZ einer postalischen Adresse zu definieren"@de ;
+			rdfs:domain schema:PostalAddress ;
+			rdfs:range schema:Text ;
+			rdfs:isDefinedBy <https://schema.org/> .
+	
+schema:streetAddress a owl:DatatypeProperty ;
+			rdfs:label "street address"@en, "Straße (Adresse)"@de ;
+			rdfs:comment "wird verwendet, um die Straße und Hausnummer/Wohnungsnummer einer postalischen Adresse zu definieren"@de ;
+			rdfs:domain schema:PostalAddress ;
+			rdfs:range schema:Text ;
+			rdfs:isDefinedBy <https://schema.org/> .
+			
+akwi:totalEnrollments a owl:DatatypeProperty ;
+			rdfs:label "total enrollments"@en, "Gesamt Eingeschriebene"@de ;
+			rdfs:comment "wird verwendet, um die Gesamtzahl der eingeschriebenen Studenten eines Mitglieds zu definieren"@de ;
+			rdfs:domain schema:Course ;
+			rdfs:range schema:Number ;
+			rdfs:isDefinedBy <https://schema.org/> .
+			
+akwi:newEnrollments a owl:DatatypeProperty ;
+			rdfs:label "new enrollments"@en, "Neue Eingeschriebene"@de ;
+			rdfs:comment "wird verwendet, um die Anzahl der neu eingeschriebenen Studenten eines Mitglieds des laufenden Jahres zu definieren"@de ;
+			rdfs:domain schema:Course ;
+			rdfs:range schema:Number ;
+			rdfs:isDefinedBy <https://schema.org/> .
+	
+
+### Named Individuals ###
+akwi:AKWI a schema:Organization ;
+			schema:legalName "Arbeitskreis Wirtschaftsinformatik an Hochschulen für angewandte Wissenschaft (AKWI); Fachgruppe der GI e. V.";
+			schema:url "http://akwi.de", "https://akwi.gi.de" ;
+			schema:subOrganization akwi:AKWI_Board .
+			
+akwi:AKWI_Board a schema:Organization ;
+			schema:name "AKWI Vorstand" ;
+			rdfs:comment "besteht aus einem/r Sprecher/in und einem/r stellvertretenden Sprecher/in" .
+			
+akwi:GIeV 	a schema:Organization ;
+			schema:legalName "Gesellschaft für Informatik (GI) e. V." ;
+			schema:url "https://gi.de" ;
+			schema:subOrganization akwi:AKWI .
+			
+### Vorstand des AKWI
+akwi:AKWI_Board schema:member akwi:vera_meister, akwi:m_wolf .

@@ -1,5 +1,5 @@
-# EKEM
-## EKEM-AKWI Basisschema für die Mitglieder des AKWI
+# EKEN
+## EKEN-AKWI Basisschema für die Mitglieder des AKWI
 ![alt text](https://raw.githubusercontent.com/MCikus/EKEM/master/akwi-ekem-Faktennetz.png "AKWI Vokabular")
 
 Dieses Vokabular wird unter der Wiederverwendung von schema.org-Klassen, Relationen und Attributen definiert. Es zielt in erster Linie auf die Unterstützung der Dokumentation, Wartung und Bereitstellung von Daten zu Mitgliedern des AKWI.

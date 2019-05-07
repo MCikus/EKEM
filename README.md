@@ -4,7 +4,7 @@
 
 Dieses Vokabular wird unter der Wiederverwendung von schema.org-Klassen, Relationen und Attributen definiert. Es zielt in erster Linie auf die Unterstützung der Dokumentation, Wartung und Bereitstellung von Daten zu Mitgliedern des AKWI.
 
-Der übergeordnete Verein heißt GI e. V. daraus bildet sich der AKWI als Arbeitskreis, welcher über ein AKWI Board verfügt. Diese drei Organisationen werden allgemein als Organisation zusammengefasst dieser Organisation sind einerseits Hochschulen und seine Fakultäten (oder Fachbereiche). 
+Der übergeordnete Verein heißt GI e. V. daraus bildet sich der AKWI als Arbeitskreis, welcher über ein AKWI Board verfügt. Diese drei Einrichtungen werden allgemein als Organisation zusammengefasst. Diese Organisationen sind einerseits Hochschulen und seine Fakultäten (oder Fachbereiche). 
 
 Die Organisationen werden mit den genauen Standorten und Anschriften versehen. 
 

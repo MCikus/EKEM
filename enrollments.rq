@@ -1,0 +1,9 @@
+PREFIX schema: <https://schema.org/>
+PREFIX akwi: <https://bmake.th-brandenburg.de/akwi/>
+SELECT ?courseName ?totalEnrollments ?newEnrollments
+WHERE {
+?s a schema:Course;
+schema:name ?courseName; 
+akwi:totalEnrollments ?totalEnrollments; 
+akwi:newEnrollments ?newEnrollments.
+}

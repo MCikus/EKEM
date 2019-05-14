@@ -1,0 +1,6 @@
+PREFIX schema: <https://schema.org/>
+SELECT ?attributeName ?attributeValue
+WHERE {
+?s a schema:PostalAddress;
+?attributeName ?attributeValue.
+}
